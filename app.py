@@ -209,7 +209,8 @@ def make_prediction(input_data):
             + ", ".join(missing_numeric)
         )
 
-    encoded.loc[:, num_cols] = scaler.transform(encoded[num_cols])
+    encoded[num_cols] = scaler.transform(encoded[num_cols])
+
 
     if not hasattr(model, "predict_proba"):
         raise ValueError("The saved model does not support probability predictions.")
